@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import "./Nav.css"
 
 function Nav() {
 
     const [show, setShow] = useState(false)
+    const history = useHistory()
+    
 
     const transitionNavBar = () => {
         if(window.scrollY > 100){
@@ -25,14 +28,16 @@ function Nav() {
             <div className="nav_contents">
                 <img 
                     className="nav__logo"
-                    src="https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo.png"
-                    alt="Netflix Logo" />
+                    src="https://download.logo.wine/logo/Netflix/Netflix-Logo.wine.png"
+                    alt="Netflix Logo"
+                    onClick={() => history.push('/')} />
 
 
                 <img
                     className="nav__avatar"
                     src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-                    alt="Netflix Avatar" />
+                    alt="Netflix Avatar"
+                    onClick={() => history.push('/profile')} />
             </div>
         </div>
     )
