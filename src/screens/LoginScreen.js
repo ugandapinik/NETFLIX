@@ -14,7 +14,7 @@ function LoginScreen() {
             <div className="loginScreen__background">
                 <img
                     className="loginScreen__logo"
-                    src="https://logos-download.com/wp-content/uploads/2016/03/Netflix_logo.png" 
+                    src="https://download.logo.wine/logo/Netflix/Netflix-Logo.wine.png" 
                     alt="Netflix Logo" />
 
 

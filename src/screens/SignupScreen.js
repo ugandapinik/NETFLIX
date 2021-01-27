@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import './SignupScreen.css'
 
 function SignupScreen() {
+
+    const register = (event) => {
+        event.preventDefault()
+    }
+
+    const signIn = (event) => {
+        event.preventDefault()
+    }
+
+
+
     return (
-        <div className="signupSceen">
-            <h1>SignUp Screen</h1>
+        <div className="signupScreen">
+            <form>
+                <h1>Sign In</h1>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button type="submit" onClick={signIn}>Sign In</button>
+
+                <h4>
+                    <span className="signupScreen__gray">New to Netflix? </span>
+                    <span className="signupScreen__link" onClick={register}>Sign up now.</span> 
+                </h4>
+            </form>
         </div>
     )
 }
