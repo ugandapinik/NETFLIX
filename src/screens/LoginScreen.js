@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import './LoginScreen.css'
+import SignUpScreen from './SignupScreen'
 
 function LoginScreen() {
 
     const [signIn, setSignIn] = useState(false)
-
+    
 
 
 
@@ -27,23 +28,29 @@ function LoginScreen() {
 
 
             <div className="loginScreen__body">
-                <>
-                    <h1>Unlimited movies, TV shows, and more.</h1>
-                    <h2>Watch anywhere. Cancel at any time.</h2>
-                    <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
+                { signIn ? (
+                    <SignUpScreen />
+                ) : (
+                    <>
+                        <h1>Unlimited movies, TV shows, and more.</h1>
+                        <h2>Watch anywhere. Cancel at any time.</h2>
+                        <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
 
-                    <div className="loginScreen__input">
-                        <form>
-                            <input 
-                                type="email"
-                                placeholder="Email Address" />
+                        <div className="loginScreen__input">
+                            <form>
+                                <input 
+                                    type="email"
+                                    placeholder="Email Address" />
 
-                            <button 
-                                className="loginScreen__getStarted"
-                                onClick={() => setSignIn(true)}>Get Started</button>
-                        </form>
-                    </div>
-                </>
+                                <button 
+                                    className="loginScreen__getStarted"
+                                    onClick={() => setSignIn(true)}>Get Started</button>
+                            </form>
+                        </div>
+                    </>
+                )}
+
+                
             </div>
         </div>
     )
