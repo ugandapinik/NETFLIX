@@ -12,7 +12,15 @@ import HomeScreen from "./HomeScreen";
 function App() {
   return (
     <div className="app">
-      <HomeScreen />
+      <Router>
+        <Switch>
+          <Route path="/">
+          <HomeScreen />
+          </Route>
+        </Switch>
+    </Router>
+
+
     </div>
   );
 }
