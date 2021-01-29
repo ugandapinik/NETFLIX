@@ -6,18 +6,26 @@ import {
   Link
 } from 'react-router-dom'
 import "./App.css";
-import HomeScreen from "./HomeScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 
 function App() {
+
+  const user = null;
+
   return (
     <div className="app">
       <Router>
-        <Switch>
-          <Route path="/">
-          <HomeScreen />
-          </Route>
-        </Switch>
+        { !user ? (
+          <Login />
+        ): (
+          <Switch>
+            <Route exact path="/">
+              <HomeScreen />
+            </Route>
+          </Switch>
+        )}
+        
     </Router>
 
 
