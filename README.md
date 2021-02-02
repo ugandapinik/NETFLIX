@@ -9,7 +9,10 @@ TMDB API
 REACT JS
 REDUX
 
-## DEMO
+## LIVE URL
+https://netflix-2e4d7.web.app
+
+## SCREENSHOT
 <img src="https://user-images.githubusercontent.com/13005159/107133623-d3218480-68c4-11eb-82ff-e56a2251146c.png">
 
 
