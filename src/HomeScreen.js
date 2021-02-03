@@ -28,7 +28,7 @@ function HomeScreen() {
 
             <Row
                 title="Action Movies"
-                fetchUrl={requests.fecthActionMovies}/>
+                fetchUrl={requests.fetchActionMovies}/>
 
             <Row
                 title="Comedy Movies"
