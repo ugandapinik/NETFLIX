@@ -10,7 +10,7 @@ REACT JS
 REDUX
 
 ## DEMO
-<img src="https://user-images.githubusercontent.com/13005159/107133623-d3218480-68c4-11eb-82ff-e56a2251146c.png" width="100%" height="300">
+<img src="https://user-images.githubusercontent.com/13005159/107133623-d3218480-68c4-11eb-82ff-e56a2251146c.png" width="400">
 
 
 
