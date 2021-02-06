@@ -20,7 +20,6 @@ function Nav() {
     }, [])
 
 
-
     return (
         <div className={`nav ${show && "nav__black"}`}>
             <div className="nav_contents">
