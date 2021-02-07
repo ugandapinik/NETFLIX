@@ -1,3 +1,19 @@
+# NETFLIX CLONE
+Cloning the Netflix interface with ReactJS.
+
+
+
+## TECHNOLOGY USED
+Firebase 
+TMDB API
+REACT JS
+REDUX
+
+## DEMO
+<img src="https://user-images.githubusercontent.com/13005159/107133623-d3218480-68c4-11eb-82ff-e56a2251146c.png" width="100%" height="300">
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
