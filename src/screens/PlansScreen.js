@@ -1,10 +1,35 @@
 import React, { useState, useEffect } from 'react'
+import { selectUser } from '../features/userSlice'
+import {useSelector} from 'react-redux'
 import db from '../firebase'
 import './PlansScreen.css'
+import { loadStripe } from '@stripe/stripe-js'
+
 
 function PlansScreen() {
 
     const [products, setProducts] = useState([])
+    const user = useSelector(selectUser)
+    const [subscription, setSubscription] = useState(null)
+
+    
+    useEffect(() => {
+        db.collection("customers")
+        .doc(user.uid)
+        .collection("subscriptions")
+        .get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(async subscription => {
+                setSubscription({
+                    role: subscription.data().role,
+                    current_period_end: subscription.data().current_period_end.seconds,
+                    current_period_start: subscription.data().current_period_start.seconds,
+                })
+            })
+        })
+    }, [user.uid])
+
+
 
     // fetching product information from firebase
     useEffect(() => {
@@ -33,6 +58,34 @@ function PlansScreen() {
 
     console.log(products)
 
+    const loadCheckout = async (priceId) => {
+        const docRef = db
+        .collection('customers')
+        .doc(user.uid)
+        .collection("checkout_sessions")
+        .add({
+            price: priceId,
+            success_url: window.location.origin,
+            cancel_url: window.location.origin
+        }) 
+
+        ;(await docRef).onSnapshot(async (snap) => {
+            const { error, sessionId } = snap.data()
+
+            if(error){
+                // show error to the customer 
+                alert(`An error occured: ${error.message}`)
+            }
+
+            if(sessionId){
+                // we have a session, let's redirect to checkout
+                // init stripe 
+                const strip = await loadStripe('pk_test_51IMjSgFD1vi8kOZndU6uKoUNtpOGN2FiToB1rciL7SLeZUiawZXEAvCH2MM6BgWIDwa1t9Wj5OibZRJlIsuP7cS5002h9IWpMP')
+                strip.redirectToCheckout({ sessionId })
+            }
+        })
+    }
+
 
     return (
         <div className="plansScreen">
@@ -47,7 +100,7 @@ function PlansScreen() {
                             <h6>{ productData.description }</h6>
                         </div>
 
-                        <button>Subscription</button>
+                        <button onClick={() => loadCheckout(productData.prices.priceId)}>Subscribe</button>
                     </div>
                 )
             })}
