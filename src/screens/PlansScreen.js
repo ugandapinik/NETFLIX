@@ -57,6 +57,7 @@ function PlansScreen() {
 
 
     console.log(products)
+    console.log(subscription)
 
     const loadCheckout = async (priceId) => {
         const docRef = db
@@ -88,10 +89,13 @@ function PlansScreen() {
 
 
     return (
+        
         <div className="plansScreen">
             { Object.entries(products).map(([productId, productData]) => {
                 // TODO add some logic to check if the user subscription is active
-
+                const isCurrentPackage = productData.name
+                ?.toLowerCase()
+                .includes(subscription?.role)
 
                 return (
                     <div className="plansScreen__plan">
@@ -100,7 +104,11 @@ function PlansScreen() {
                             <h6>{ productData.description }</h6>
                         </div>
 
-                        <button onClick={() => loadCheckout(productData.prices.priceId)}>Subscribe</button>
+                        
+                        <button 
+                            onClick={() => !isCurrentPackage && loadCheckout(productData.prices.priceId)}>
+                                { isCurrentPackage ? 'Current Package' : 'Subscribe'}
+                        </button>
                     </div>
                 )
             })}
