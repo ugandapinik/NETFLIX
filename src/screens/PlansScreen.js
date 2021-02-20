@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import db from '../firebase'
+import './PlansScreen.css'
 
-function PlanScreen() {
+function PlansScreen() {
+
+    const [products, setProducts] = useState([])
+
+    // fetching product information from firebase
+    useEffect(() => {
+        db.collection('products')
+    }, [])
+
+
+
     return (
         <div>
             <div className="PlansScreen__plan">
@@ -8,6 +20,7 @@ function PlanScreen() {
                     <h5>Annual</h5>
                     <h6>Monthly</h6>
                 </div>
+                
                 <button>
                 Subscribe
                 </button>
@@ -16,4 +29,4 @@ function PlanScreen() {
     )
 }
 
-export default PlanScreen
+export default PlansScreen
